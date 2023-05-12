@@ -2,7 +2,7 @@ use proconio::input;
 
 pub fn main() {
     input! {
-        n: u8,
+        _n: u8,
         s: String
     }
     
