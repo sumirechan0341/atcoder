@@ -1,10 +1,16 @@
 use std::process::Command;
 use std::fs::OpenOptions;
+use std::path::Path;
 use std::io::{Read, Write, BufWriter};
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
     let input = &args[1];
+
+    if Path::new(input).exists() {
+        println!("already exists problem!!");
+        return;
+    }
 
     let mut file = OpenOptions::new().read(true).open("./Cargo.toml").unwrap();
 
