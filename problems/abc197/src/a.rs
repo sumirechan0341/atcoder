@@ -1,4 +1,4 @@
-use proconio::{input, marker::Chars};
+use proconio::{input};
 
 pub fn main() {
     input !{
