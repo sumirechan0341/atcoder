@@ -1,4 +1,4 @@
-use proconio::{input};
+use proconio::input;
 
 pub fn main() {
     input !{
