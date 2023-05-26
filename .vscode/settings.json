@@ -1,4 +1,8 @@
 {
   "rust-analyzer.showUnlinkedFileNotification": false,
-  "iis.configDir": ""
+  "rust-analyzer.checkOnSave.allTargets": false,
+  "iis.configDir": "",
+  "[rust]": {
+    "editor.tabSize": 4
+  }
 }
