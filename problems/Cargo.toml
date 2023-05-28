@@ -1,5 +1,15 @@
 [workspace]
 members = [
+  "abc080",
+  "abc081",
+  "abc082",
+  "abc083",
+  "abc084",
+  "abc085",
+  "abc086",
+  "abc087",
+  "abc088",
+  "abc089",
   "abc090",
   "abc091",
   "abc092",

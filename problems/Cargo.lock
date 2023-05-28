@@ -3,6 +3,76 @@
 version = 3
 
 [[package]]
+name = "abc080"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
+name = "abc081"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
+name = "abc082"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
+name = "abc083"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
+name = "abc084"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
+name = "abc085"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
+name = "abc086"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
+name = "abc087"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
+name = "abc088"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
+name = "abc089"
+version = "0.1.0"
+dependencies = [
+ "proconio",
+]
+
+[[package]]
 name = "abc090"
 version = "0.1.0"
 dependencies = [
