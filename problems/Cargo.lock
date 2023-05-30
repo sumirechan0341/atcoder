@@ -3,6 +3,86 @@
 version = 3
 
 [[package]]
+name = "abc050"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
+name = "abc051"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
+name = "abc052"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
+name = "abc053"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
+name = "abc054"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
+name = "abc055"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
+name = "abc056"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
+name = "abc057"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
+name = "abc058"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
+name = "abc059"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "proconio",
+]
+
+[[package]]
 name = "abc060"
 version = "0.1.0"
 dependencies = [
