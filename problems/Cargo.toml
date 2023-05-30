@@ -1,5 +1,15 @@
 [workspace]
 members = [
+  "abc040",
+  "abc041",
+  "abc042",
+  "abc043",
+  "abc044",
+  "abc045",
+  "abc046",
+  "abc047",
+  "abc048",
+  "abc049",
   "abc050",
   "abc051",
   "abc052",
@@ -257,4 +267,15 @@ members = [
 ]
 [build]
 target-dir = "target"
+
+
+
+
+
+
+
+
+
+
+
 
