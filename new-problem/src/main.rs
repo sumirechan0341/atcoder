@@ -55,7 +55,8 @@ fn main() {
     file_content.split("\n").for_each(|line| {
         if next {
             next = false;
-            writer.write_all("proconio = \"0.4.3\"".as_bytes()).unwrap();
+            writer.write_all("proconio = \"0.4.3\"\n".as_bytes()).unwrap();
+            writer.write_all("itertools = \"0.10.5\"".as_bytes()).unwrap();
             writer.write_all("\n".as_bytes()).unwrap();
         }
         if line.contains("[dependencies]") {
