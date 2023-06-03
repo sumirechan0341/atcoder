@@ -1962,6 +1962,7 @@ dependencies = [
 name = "abc267"
 version = "0.1.0"
 dependencies = [
+ "itertools",
  "proconio",
 ]
 

@@ -20,15 +20,15 @@ pub fn main() {
                 xend = w;
             }
         }
+        if xstart != 0 && xend == 0 {
+            xend = 10;
+        }
         if ystart != 0 && yend == 0 && mat[h][xstart-1] == '.' {
             yend = h;
         }
     }
     if yend == 0 {
         yend = 10;
-    }
-    if xend == 0 {
-        xend = 10;
     }
     println!("{} {}", ystart, yend);
     println!("{} {}", xstart, xend);
