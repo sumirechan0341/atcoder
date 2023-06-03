@@ -2221,6 +2221,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc304"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
