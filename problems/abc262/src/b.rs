@@ -27,7 +27,8 @@ pub fn main() {
     for i in 0..n {
         tr += a3[i][i];
     }
-    println!("{}", tr / 6 / n);
+    
+    println!("{}", tr / 6);
 }
 
 fn mat_product(a: &Vec<Vec<usize>>, b: &Vec<Vec<usize>>, n: usize) -> Vec<Vec<usize>> {
@@ -37,7 +38,7 @@ fn mat_product(a: &Vec<Vec<usize>>, b: &Vec<Vec<usize>>, n: usize) -> Vec<Vec<us
         for j in 0..n {
             let mut sum = 0;
             for k in 0..n {
-                sum += a[i][k] * a[k][j];
+                sum += a[i][k] * b[k][j];
             }
             v.push(sum);
         }
