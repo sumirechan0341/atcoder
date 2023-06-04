@@ -6,3 +6,10 @@ atcoder
 - 剰余をとるときは引き算に気を付ける。+p して %pを取ればOK
 - (a + b - 1) / b
 - 方向探索は[dx, dy]みたいに表現するのがよい
+- itertoolsのizipマクロ便利っぽい
+    - enumarateと違ってusizeじゃないものが欲しいときとかに使う
+    - 普通のzipが欲しいときも使う
+- second borrowがなんとかかんとかって言われたときは、**前方の変数**にcloneをつければよい
+- Vec<(index, value)>みたいなものをソートしたときはsort_by_keyを使えばよい
+sort_by_key(|p| p.1)みたいに使う
+- メモ https://zenn.dev/nsarbosh/articles/4ef65d54c8b2d7
