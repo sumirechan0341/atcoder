@@ -13,3 +13,5 @@ atcoder
 - Vec<(index, value)>みたいなものをソートしたときはsort_by_keyを使えばよい
 sort_by_key(|p| p.1)みたいに使う
 - メモ https://zenn.dev/nsarbosh/articles/4ef65d54c8b2d7
+- sliceで分割した文字列をうまく結合する方法を知りたい vec![s1, s2].concat()みたいにしてるが…
+vec<&char>になるつらみ
