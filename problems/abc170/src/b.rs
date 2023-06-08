@@ -5,5 +5,5 @@ pub fn main() {
         x: i32,
         y: i32
     };
-    println!("{}", if 2 * x <= y && y <= 4 * x && x % 2 == 0 { "Yes" } else { "No" });
+    println!("{}", if 2 * x <= y && y <= 4 * x && y % 2 == 0 { "Yes" } else { "No" });
 }
