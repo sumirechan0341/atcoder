@@ -2,13 +2,19 @@ use proconio::{input, marker::Chars};
 
 pub fn main() {
     input! {
-        s: Chars
+        n: usize,
+        an: [usize; n],
+        bn: [i32; n],
+        cn1: [i32; n-1]
     };
-    for i in 0..s.len() {
-        if (i % 2 == 0 && s[i] == 'L') || (i % 2 == 1 && s[i] == 'R') {
-            println!("{}", "No");
-            return;
+    let mut prev = n;
+    let mut s = 0;
+    for a in an {
+        s += bn[a-1];
+        if prev + 1 == a-1 {
+            s += cn1[prev];
         } 
+        prev = a-1;
     }
-    println!("{}", "Yes");
+    println!("{}", s);
 }
