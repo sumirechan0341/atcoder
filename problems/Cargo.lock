@@ -510,6 +510,7 @@ name = "abc060"
 version = "0.1.0"
 dependencies = [
  "itertools",
+ "num",
  "proconio",
 ]
 
