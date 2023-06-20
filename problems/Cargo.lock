@@ -2030,6 +2030,7 @@ dependencies = [
 name = "abc275"
 version = "0.1.0"
 dependencies = [
+ "itertools",
  "proconio",
 ]
 
@@ -2264,6 +2265,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
+name = "dwacon005"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+]
+
+[[package]]
 name = "either"
 version = "1.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2367,4 +2377,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "91c333be3af2936f8e810300bc74fe4d0cc168ebc04ab02a28c5b1060fa1bd59"
 dependencies = [
  "lazy_static",
+]
+
+[[package]]
+name = "zone2021"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
 ]
