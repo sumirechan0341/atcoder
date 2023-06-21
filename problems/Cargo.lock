@@ -2380,6 +2380,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "tenka1-2012"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+]
+
+[[package]]
 name = "zone2021"
 version = "0.1.0"
 dependencies = [
