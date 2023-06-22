@@ -2259,6 +2259,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "arc107"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2381,6 +2390,15 @@ dependencies = [
 
 [[package]]
 name = "tenka1-2012"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+]
+
+[[package]]
+name = "tenka1-2014"
 version = "0.1.0"
 dependencies = [
  "itertools",

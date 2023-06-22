@@ -5,20 +5,16 @@ pub fn main() {
         n: usize,
         pn: [usize; n]
     };
-    let mut max = 0;
-    let mut chain = 0;
-    let mut dx = 0;
-    
+    // k回転した時の0..nの満足度を知りたい O(N^2)
+    // 各piについて何回回転したとき満足度を得られるか、
+    // このような数はちょうど3つあるが、これを走査すれば最初の情報と同じものがとれる
+    // 2重ループを(n, n)の直積にしてループを回せば十分のパターンもある。
+    let mut ans = vec![0; n];
     for i in 0..n {
-        if pn[i] + 1 != pn[(i+1)%n] {
-            chain = 0;
-        } else {
-            chain += 1;
-            if chain > max {
-                max = chain;
-                dx = (n+i-pn[i])%n;
-            }
-        }
+        ans[(pn[i]+n-1-i)%n] += 1;
+        ans[(pn[i]+n-i)%n] += 1;
+        ans[(pn[i]+n+1-i)%n] += 1;
     }
-    
+    ans.sort();
+    println!("{}", ans.last().unwrap());
 }
