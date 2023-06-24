@@ -1,5 +1,7 @@
 [workspace]
 members = [
+  "arc143",
+  "abc307",
   "arc107",
   "tenka1-2014",
   "tenka1-2012",
@@ -314,6 +316,8 @@ members = [
 ]
 [build]
 target-dir = "target"
+
+
 
 
 
