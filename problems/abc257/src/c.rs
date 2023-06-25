@@ -7,36 +7,35 @@ pub fn main() {
     input!{
         n: usize,
         s: Chars,
-        wn: [usize; n]
+        wn: [u64; n]
     };
-    let mut adult = HashMap::<usize, usize>::new();
+    let mut adult = vec![];
     let mut child = vec![];
     for i in 0..n {
         if s[i] == '0' {
-            child.push(wn[i]);
+            child.push(wn[i]*10);
         } else {
-            adult.entry(wn[i]).and_modify(|x| {
-                *x += 1;
-            }).or_insert(1);
+            adult.push(wn[i]*10);
         }
     }
     child.sort();
-    let mut keys = adult.keys().collect::<Vec<_>>();
-    keys.sort();
-    let mut total_adult_out = 0;
-    for x in keys {
-        let will_out_adult = adult.get(x).unwrap();
-        let will_out_child = child.len() - child.partition_point(|y| y > x);
-        println!("vec {:?}", child);
-        println!("len {}", child.len());
-        println!("part {}", child.partition_point(|y| y > x));
-        println!("x {}", x);
-        println!("{}", will_out_child);
-        if *will_out_adult >= will_out_child {
-            println!("{}", n-total_adult_out-will_out_child);
-            return;
-        }
-        total_adult_out += will_out_adult;
+    adult.sort();
+    if adult.len() == 0 {
+        println!("{}", n);
+        return;
     }
-    println!("{}", n);
+
+    let mut max: usize = 0;
+    for x in &adult {
+        // partition_pointは使えない
+        // let adult_out = adult.partition_point(|&y| y < *x);
+        // let child_out = child.partition_point(|&y| y >= *x);
+        let adult_out = adult.binary_search(&(x-1)).unwrap_err();
+        let child_out = child.len() - child.binary_search(&(x-1)).unwrap_err();
+        if max < n - (adult_out + child_out) {
+            max = n - (adult_out + child_out);
+        } 
+
+    }
+    println!("{}", max);
 }
