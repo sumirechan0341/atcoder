@@ -1648,6 +1648,7 @@ dependencies = [
 name = "abc221"
 version = "0.1.0"
 dependencies = [
+ "itertools",
  "proconio",
 ]
 
@@ -1669,6 +1670,7 @@ dependencies = [
 name = "abc224"
 version = "0.1.0"
 dependencies = [
+ "itertools",
  "proconio",
 ]
 
