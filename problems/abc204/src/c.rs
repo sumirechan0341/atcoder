@@ -5,6 +5,6 @@ pub fn main() {
     input!{
         n: usize,
         m: usize,
-        abm: 
+        abm: [(usize, usize); m]
     };
 }
