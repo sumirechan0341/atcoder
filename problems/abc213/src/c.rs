@@ -9,6 +9,7 @@ pub fn main() {
         n: usize,
         abn: [(usize, usize); n]
     };
+    // 座標圧縮の例 座圧
     let new_w = HashSet::<usize>::from_iter(abn.iter().map(|x| x.1));
     let new_h = HashSet::<usize>::from_iter(abn.iter().map(|x| x.0));
     let mut sorted_w = new_w.clone().into_iter().collect::<Vec<_>>();
