@@ -26,21 +26,20 @@ pub fn main() {
     }
     dp[1][0] = count[1];
     dp[1][1] = count[0];
-    
-    dp[2][0] = dp[1][0]*count[1];
-    dp[2][1] = dp[1][0]*count[0] + dp[1][1]*count[1];
-    dp[2][2] = dp[1][1]*count[0];
-    
-    dp[3][0] = dp[2][0]*count[1];
-    dp[3][1] = dp[2][0]*count[0] + dp[2][1]*count[1];
-    dp[3][2] = dp[2][1]*count[0] + dp[2][2]*count[1];
-    dp[3][3] = dp[2][2]*count[0];
-    
-    dp[4][0] = dp[3][0]*count[1];
-    dp[4][1] = dp[3][0]*count[0] + dp[3][1]*count[1];
-    dp[4][2] = dp[3][1]*count[0] + dp[3][2]*count[1];
-    dp[4][3] = dp[3][2]*count[0] + dp[3][3]*count[1];
-    dp[4][4] = dp[3][3]*count[0];
-
-    println!("{}", dp[4][count[0]]);
+    // dp[i][j] i桁でj個oを使用
+    for i in 2..=4 {
+        for j in 0..=i {
+            if j == 0 {
+                dp[i][j] = dp[i-1][j]*count[1];
+            } else if j == i {
+                dp[i][j] = dp[i-1][j-1]*count[0];
+            } else {
+                dp[i][j] = dp[i-1][j-1]*count[0] + dp[i-1][j]*count[1];
+            }
+            
+        }
+    }
+    println!("{}", dp[4][3]);
+    println!("{}", dp[4][4]);
+    println!("{}", dp[4][count[0]..=4].iter().sum::<usize>());
 }
