@@ -5,41 +5,18 @@ pub fn main() {
     input!{
         s: Chars
     };
-    let mut dp = vec![vec![0; 5]; 5];
-    let mut count = vec![0; 3];
-    for i in 0..10 {
-        match s[i] {
-            'o' => {
-                count[0] += 1;
-            },
-            '?' => {
-                count[1] += 1;
-            },
-            _ => {
-
-            }
+    let mut count = 0;
+    let must_used = s.iter().enumerate().filter_map(|c| if c.1 == &'o' { Some(c.0) } else { None }).collect::<Vec<_>>();
+    let must_not_used = s.iter().enumerate().filter_map(|c| if c.1 == &'x' { Some(c.0) } else { None }).collect::<Vec<_>>();
+    for i in 0..10000 {
+        let pass = format!("{:04}", i).chars().map(|c| c.to_digit(10).unwrap() as usize).collect::<Vec<_>>();
+        if pass.iter().any(|c| must_not_used.contains(c)) {
+            continue;
         }
-    }
-    if count[0] > 4 {
-        println!("{}", 0);
-        return;
-    }
-    dp[1][0] = count[1];
-    dp[1][1] = count[0];
-    // dp[i][j] i桁でj個oを使用
-    for i in 2..=4 {
-        for j in 0..=i {
-            if j == 0 {
-                dp[i][j] = dp[i-1][j]*count[1];
-            } else if j == i {
-                dp[i][j] = dp[i-1][j-1]*count[0];
-            } else {
-                dp[i][j] = dp[i-1][j-1]*count[0] + dp[i-1][j]*count[1];
-            }
-            
+        if must_used.iter().any(|c| !pass.contains(c)) {
+            continue;
         }
+        count += 1;
     }
-    println!("{}", dp[4][3]);
-    println!("{}", dp[4][4]);
-    println!("{}", dp[4][count[0]..=4].iter().sum::<usize>());
+    println!("{}", count);
 }
