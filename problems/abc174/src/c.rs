@@ -1,22 +1,25 @@
 use proconio::{input, marker::Chars};
-type VS = Vec<String>;
 
 pub fn main() {
-    input!{
-        x: i128,
-        k: i128,
-        d: i128
+    input! {
+        n: i32
     };
-    if k*d <= x.abs() {
-        println!("{}", x.abs() - k*d);
+    if n==1 || n == 7 {
+        println!("{}", 1);
         return;
     }
-    let remain = k - (x.abs()/d);
-    if remain % 2 == 0 {
-        println!("{}", x.abs() - (x.abs()/d) * d);
-        return;
-    } else {
-        println!("{}", (x.abs() - (x.abs()/d + 1) * d).abs());
-        return;
+    let mut mod_total = 7;
+    let mut mod_prev = 7;
+    for i in 1..=n {
+        let mod_now = (mod_prev * 10) % n;
+        mod_prev = mod_now;
+        mod_total += mod_now;
+        mod_total %= n;
+        if mod_total == 0 {
+            println!("{}", i+1);
+            return;
+        }
     }
+    println!("{}", -1);
+    return;
 }

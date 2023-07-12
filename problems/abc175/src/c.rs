@@ -3,17 +3,20 @@ type VS = Vec<String>;
 
 pub fn main() {
     input!{
-        n: usize,
-        an: [i64; n]
+        x: i128,
+        k: i128,
+        d: i128
     };
-    let mut prev_max = 0;
-    let mut total = 0;
-    for i in 0..n {
-        if an[i] > prev_max {
-            prev_max = an[i];
-        } else {
-            total += prev_max - an[i];
-        }
+    if k*d <= x.abs() {
+        println!("{}", x.abs() - k*d);
+        return;
     }
-    println!("{}", total);
+    let remain = k - (x.abs()/d);
+    if remain % 2 == 0 {
+        println!("{}", x.abs() - (x.abs()/d) * d);
+        return;
+    } else {
+        println!("{}", (x.abs() - (x.abs()/d + 1) * d).abs());
+        return;
+    }
 }
