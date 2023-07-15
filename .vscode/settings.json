@@ -4,5 +4,11 @@
   "iis.configDir": "",
   "[rust]": {
     "editor.tabSize": 4
+  },
+  "[markdown]": {
+    "editor.wordWrap": "on",
+    "files.trimTrailingWhitespace": false,
+    "editor.trimAutoWhitespace": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   }
 }

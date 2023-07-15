@@ -1,5 +1,6 @@
 mod a;
 mod b;
+mod c;
 fn main() {
-    b::main();
+    c::main();
 }
