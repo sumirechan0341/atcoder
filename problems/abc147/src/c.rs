@@ -29,15 +29,16 @@ pub fn main() {
             }
             ii = ii >> 1;
         }
-        // 正直者の選び方を決めているので、正直者グラフが閉じている必要がある。
+        // 全パターン試すので正直者の数が厳密に一致しなければ、失敗扱いでよい
+        // 正直者グラフが閉じていて、中に不親切な人がいなければ無矛盾
         let mut ok = true;
         for j in &indices {
-            for e in &graph[*j] {
-                if e == &1 && !indices.contains(j) {
+            for k in 0..n {
+                if graph[*j][k] == 1 && !indices.contains(&k) {
                     ok = false;
                     break;
                 }
-                if e == &-1 && indices.contains(j) {
+                if graph[*j][k] == -1 && indices.contains(&k) {
                     ok = false;
                     break;
                 }
