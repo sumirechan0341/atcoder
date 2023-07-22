@@ -2,15 +2,11 @@ use proconio::{input, marker::Chars};
 
 pub fn main() {
     input! {
-        w: i32,
-        h: i32,
-        x: i32,
-        y: i32
+        w: i64,
+        h: i64,
+        x: i64,
+        y: i64
     };
-    let tate1 = x * h;
-    let tate2 = (w-x) * h;
-
-    let yoko1 = y * w;
-    let yoko2 = (h - y) * w;
-    println!("{}", tate1.min(tate2).max(yoko1.min(yoko2)));
+    
+    println!("{} {}", (w*h) as f64 / 2.0, if 2*x == w && 2*y == h { 1 } else { 0 });
 }
