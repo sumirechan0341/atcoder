@@ -1,0 +1,48 @@
+use proconio::{input, marker::Chars};
+type VS = Vec<String>;
+
+pub fn main() {
+    input!{
+        n: usize,
+        m: usize,
+    };
+    let mut skm = vec![];
+    for _i in 0..m {
+        input!{
+            k: usize,
+            sk: [usize; k]
+        };
+        skm.push(sk);
+    }
+    input!{
+        pm: [usize; m],
+    };
+    let mut count = 0;
+    for i in 0..2_i32.pow(n as u32) {
+        let mut parity = vec![0; m];
+        let mut jj = i;
+        for j in 0..n {
+            // jはスイッチの番号
+            if jj & 1 == 1 {
+                for l in 0..m {
+                    // lは電球の番号
+                    if skm[l].contains(&(j+1)) {
+                        parity[l] = if parity[l] == 0 { 1 } else { 0 };
+                    }
+                }
+            }
+            jj = jj >> 1;
+        }
+        let mut ok = true;
+        for j in 0..m {
+            if pm[j] != parity[j] {
+                ok = false;
+                break;
+            }
+        }
+        if ok {
+            count += 1;
+        }
+    }
+    println!("{}", count);
+}

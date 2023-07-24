@@ -1,5 +1,6 @@
 [workspace]
 members = [
+  "hhkb2020",
   "abc311",
   "abc310",
   "disco2016",
@@ -321,6 +322,7 @@ members = [
 ]
 [build]
 target-dir = "target"
+
 
 
 
