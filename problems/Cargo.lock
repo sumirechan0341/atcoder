@@ -921,6 +921,7 @@ dependencies = [
 name = "abc118"
 version = "0.1.0"
 dependencies = [
+ "num",
  "proconio",
 ]
 
