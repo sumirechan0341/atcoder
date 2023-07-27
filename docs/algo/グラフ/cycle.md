@@ -14,4 +14,5 @@
 
   例題
   - [ABC311 C問題](https://atcoder.jp/contests/abc311/tasks/abc311_c)
-[解答例](/problems/abc311/src/c.rs)
+    
+    [解答例](/problems/abc311/src/c.rs)
