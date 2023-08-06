@@ -1,5 +1,5 @@
 [package]
-name = "abc070"
+name = "abc313"
 version = "0.1.0"
 edition = "2021"
 
@@ -7,4 +7,6 @@ edition = "2021"
 
 [dependencies]
 proconio = "0.4.3"
+itertools = "0.10.5"
 num = "0.4.0"
+
