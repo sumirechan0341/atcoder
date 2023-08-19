@@ -1,47 +1,30 @@
-use std::collections::{HashMap, HashSet};
 use proconio::{input, marker::Chars};
 
 pub fn main() {
     input! {
-        r: usize,
-        c: usize,
-        k: usize,
         n: usize,
-        rcn: [(usize, usize); n]
+        d: usize,
+        k: usize,
+        lrd: [(usize, usize); d],
+        stk: [(usize, usize); k]
     };
-    let mut rnum = vec![0; r+1];
-    let mut cnum = vec![0; c+1];
-    for (i, j) in &rcn {
-        rnum[*i] += 1;
-        cnum[*j] += 1;
-    }
-    let mut rk = vec![0; k+1];
-    let mut ck = vec![0; k+1];
-
-    for i in 1..r+1 {
-        if rnum[i] > k {
-            continue;
-        }
-        rk[rnum[i]] += 1;
-    }
-    for i in 1..c+1 {
-        if cnum[i] > k {
-            continue;
-        }
-        ck[cnum[i]] += 1;
-    }
-    let mut total: i64 = 0;
-    for i in 0..k+1 {
-        total += rk[i]*ck[k-i];
-    }
-
-    for (i, j) in &rcn {
-        if rnum[*i]+cnum[*j] == k {
-            total -= 1;
-        }
-        if rnum[*i]+cnum[*j] == k+1 {
-            total += 1;
+    for &(s, t) in &stk {
+        let mut left = s;
+        let mut right = s;
+        for i in 0..n {
+            let l = lrd[i].0;
+            let r = lrd[i].1;
+            if left > l && left <= r {
+                left = l;
+            }
+            if right < r && right >= l {
+                right = r;
+            }
+            if left <= t && t <= right {
+                println!("{}", i+1);
+                break;
+            }
         }
     }
-    println!("{}", total);
+    
 }
