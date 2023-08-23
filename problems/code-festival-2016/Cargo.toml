@@ -1,5 +1,5 @@
 [package]
-name = "abc018"
+name = "code-festival-2016"
 version = "0.1.0"
 edition = "2021"
 
@@ -9,4 +9,4 @@ edition = "2021"
 proconio = "0.4.3"
 itertools = "0.10.5"
 num = "0.4.0"
-proptest = "1.0.0"
+
