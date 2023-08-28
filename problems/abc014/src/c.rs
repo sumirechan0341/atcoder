@@ -1,57 +1,24 @@
-/// 0-indexed
-struct SegmentTree<T, F> {
-    n: usize,
-    dat: Vec<T>,
-    op: F,
-    e: T,
+use proconio::{input, marker::Chars};
+type VS = Vec<String>;
+
+pub fn main() {
+    input!{
+        n: usize,
+        abn: [(usize, usize); n]
+    };
+    let mut seg = LazySegmentTree::new(1000001, |a, b| a+b, 0);
+    for &(a, b) in &abn {
+        seg.update(a, b+1, 1);
+    }
+    let mut max = 0;
+    for i in 0..=1000000 {
+        if max < seg.query(i, i+1) {
+            max = seg.query(i, i+1);
+        }
+    }
+    println!("{}", max);
 }
 
-impl<T: Copy + std::fmt::Debug, F: Fn(T, T) -> T> SegmentTree<T, F> {
-    fn new(n: usize, op: F, e: T) -> Self {
-        let mut n_ = 1;
-        while n_ < n {
-            n_ *= 2;
-        }
-        SegmentTree {
-            n: n_,
-            dat: vec![e; 2*n_-1],
-            op,
-            e
-        }
-    }
-    /// k番目の値(0-indexed)をaに変更する
-    fn update(&mut self, k: usize, a: T) {
-        let mut k = k + self.n - 1;
-        self.dat[k] = a;
-        while k > 0 {
-            k = (k-1)/2;
-            self.dat[k] = (self.op)(self.dat[k*2+1], self.dat[k*2+2]);
-        }
-    }
-    /// [a, b)の区間でクエリを実行する
-    fn query(&self, a: usize, b: usize) -> T {
-        self.query_sub(a, b, 0, 0, self.n)
-    }
-
-    /// queryの用の関数
-    /// 陽に使うことはない
-    fn query_sub(&self, a: usize, b: usize, k: usize, l: usize, r: usize) -> T {
-        let mut ll = l + (self.n-1);
-        let mut rr = r + (self.n-1);
-        let mut y = self.e;
-        while ll < rr {
-            if ll & 1 == 0{
-                y = (self.op)(y, self.dat[ll]);
-            }
-            if rr & 1 == 0{
-                y = (self.op)(y, self.dat[rr-1]);
-            }
-            ll = ll/2;
-            rr = (rr-1)/2;
-        }
-        return y;
-    }
-}
 
 /// 0-indexed
 struct LazySegmentTree<T, F> {
