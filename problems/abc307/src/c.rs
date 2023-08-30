@@ -1,5 +1,3 @@
-use std::collections::HashSet;
-
 use proconio::{input, marker::Chars};
 type VS = Vec<String>;
 
@@ -15,108 +13,83 @@ pub fn main() {
         wx: usize,
         xhx: [Chars; hx],
     };
-    for i in 0..hx {
-        for j in 0..wx {
-            let mut used = HashSet::<(usize, usize)>::new();
-            let mut ok = true;
-            // シートAを重ね合わせる
-            if xhx[i][j] == '#' {
-                for k in 0..ha {
-                    for l in 0..wa {
-                        if i+k >= hx {
-                            if aha[k][l] == '#' {
-                                ok = false;
-                                continue;
-                            } else {
-                                continue;
-                            }
-                        }
-                        if l+j >= wx {
-                            if aha[k][l] == '#' {
-                                ok = false;
-                                continue;
-                            } else {
-                                continue;
-                            }
-                        }
-                        if aha[k][l] == '#' {
-                            if xhx[i+k][j+l] != '#' {
-                                ok = false;
-                                continue;
-                            } else {
-                                used.insert((i+k, j+l));
-                            }
-                        }
-                    }
-                }
-                if !ok {
-                    break;
-                }
-                for ii in 0..hx {
-                    for jj in 0..wx {
-                        if xhx[ii][jj] == '#' {
-                            for k in 0..hb {
-                                for l in 0..wb {
-                                    if ii+k >= hx {
-                                        if bhb[k][l] == '#' {
-                                            ok = false;
-                                            continue;
-                                        } else {
-                                            continue;
-                                        }
-                                    }
-                                    if l+jj >= wx {
-                                        if bhb[k][l] == '#' {
-                                            ok = false;
-                                            continue;
-                                        } else {
-                                            continue;
-                                        }
-                                    }
-                                    if bhb[k][l] == '#' {
-                                        if xhx[ii+k][jj+l] != '#' {
-                                            ok = false;
-                                            continue;
-                                        } else {
-                                            used.insert((ii+k, jj+l));
-                                        }
-                                    }
-                                }
-                            }
-                        } else {
-                            continue;
-                        }
-                        let mut check = true;
-                        if !ok {
-                            continue;
-                        }
-                        for iii in 0..hx {
-                            for jjj in 0..wx {
-                                if xhx[iii][jjj] == '#' {
-                                    if !used.contains(&(iii, jjj)) {
-                                        check =false;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        if check {
-                            println!("{}", "Yes");
-                            return;
-                        } else {
-                            break;
-                        }
-                    }
-                }
-                
-                if !ok {
-                    continue;
-                }
-                
+    let normalize_a = normalize(&aha, ha, wa);
+    let normalize_b = normalize(&bhb, hb, wb);
+    let normalize_x = normalize(&xhx, hx, wx);
 
+    for i in 0..20 {
+        for j in 0..20 {
+            let mut map = vec![vec!['.'; 20]; 20];
+
+            for k in 0..ha {
+                for l in 0..wa {
+                    map[k+hx][l+wx] = normalize_a[k][l];
+                }
+            }
+            let mut b_ok = true;
+            for k in 0..hb {
+                for l in 0..wb {
+                    if normalize_b[k][l] == '#' {
+                        if i+k >= 20 || j+l >= 20 {
+                            b_ok = false;
+                            continue;
+                        }
+                        map[i+k][j+l] = normalize_b[k][l];
+                    }
+                }
+            }
+            if !b_ok {
+                continue;
+            }
+            let normalize_map = normalize(&map, 20, 20);
+            let mut ok = true;
+            for k in 0..20 {
+                for l in 0..20 {
+                    if normalize_map[k][l] == '#' {
+                        if k > hx-1 || l > wx-1 || normalize_x[k][l] != '#' {
+                            ok = false;
+                            continue;
+                        }
+                    } else {
+                        if k > hx-1 || l > wx-1 || normalize_x[k][l] != '#' {
+                            continue;
+                        }
+                        ok = false;
+                    }
+                }
+            }
+            if ok {
+                println!("{}", "Yes");
+                return;
             }
         }
     }
     println!("{}", "No");
 
+}
+
+fn normalize(a: &Vec<Vec<char>>, h: usize, w: usize) -> Vec<Vec<char>> {
+    let mut res = vec![vec!['.'; w]; h];
+    let mut min_w = w;
+    let mut min_h = h;
+    for i in 0..h {
+        for j in 0..w {
+            if a[i][j] == '#' {
+                if i < min_h {
+                    min_h = i;
+                }
+                if j < min_w {
+                    min_w = j;
+                }
+            }
+        }
+    }
+    for i in 0..h {
+        for j in 0..w {
+            if a[i][j] == '#' {
+                res[i-min_h][j-min_w] = '#';
+            }
+        }
+    }
+    return res;
 }
