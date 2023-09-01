@@ -19,6 +19,7 @@ pub fn main() {
         sn[i+1] = sn[i] + an[i]-med;
     }
     // 最小値が0になるように平行移動する
+    // or中央値が0
     let an2 = an.iter().map(|x| x*2).collect::<Vec<_>>();
     for x in xq {
         if let Err(y) = an2.binary_search(&(2*x-1)) {
@@ -28,13 +29,10 @@ pub fn main() {
         // min_cost + (med-x)*(n-y) + 
         // println!("{}", ((x-med)*n as i64-d_med_sum).abs());
     }
-    // y=20
-    // 2 5 5 6 11 20
-    // -18 -15 -15 -14 -9
-    // -3 0 0 1 6 
+    // N-5
+    // -3 0 0 1 6
+    // 
     
-    // -1 2 2 3 8
-
     // 1 => 24 損5
     // 2 => 19 得1 損4 x
     // 3 => 16 得1 損4
