@@ -18,6 +18,7 @@ pub fn main() {
     for i in 0..n {
         sn[i+1] = sn[i] + an[i]-med;
     }
+    // 最小値が0になるように平行移動する
     let an2 = an.iter().map(|x| x*2).collect::<Vec<_>>();
     for x in xq {
         if let Err(y) = an2.binary_search(&(2*x-1)) {
