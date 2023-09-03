@@ -58,6 +58,7 @@ fn main() {
             writer.write_all("proconio = \"0.4.3\"\n".as_bytes()).unwrap();
             writer.write_all("itertools = \"0.10.5\"\n".as_bytes()).unwrap();
             writer.write_all("num = \"0.4.0\"".as_bytes()).unwrap();
+            writer.write_all("proptest = \"1.0.0\"".as_bytes()).unwrap();
             writer.write_all("\n".as_bytes()).unwrap();
         }
         if line.contains("[dependencies]") {
