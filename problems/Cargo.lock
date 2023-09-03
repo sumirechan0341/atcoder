@@ -2372,6 +2372,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc318"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+]
+
+[[package]]
 name = "arc107"
 version = "0.1.0"
 dependencies = [
@@ -2531,6 +2540,15 @@ dependencies = [
 
 [[package]]
 name = "hhkb2020"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+]
+
+[[package]]
+name = "indeednow-qualb"
 version = "0.1.0"
 dependencies = [
  "itertools",
