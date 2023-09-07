@@ -1,5 +1,6 @@
 [workspace]
 members = [
+  "jsc2019-qual-b",
   "indeednow-qualb",
   "abc318",
   "arc122",
@@ -331,6 +332,7 @@ members = [
 ]
 [build]
 target-dir = "target"
+
 
 
 
