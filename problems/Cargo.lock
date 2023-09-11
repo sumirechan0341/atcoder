@@ -2381,6 +2381,26 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc319"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+ "proptest",
+]
+
+[[package]]
+name = "arc057"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+ "proptest",
+]
+
+[[package]]
 name = "arc107"
 version = "0.1.0"
 dependencies = [
