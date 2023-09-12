@@ -2245,6 +2245,7 @@ name = "abc302"
 version = "0.1.0"
 dependencies = [
  "proconio",
+ "proptest",
 ]
 
 [[package]]
