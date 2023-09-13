@@ -1,3 +1,5 @@
+use std::collections::VecDeque;
+
 use proconio::{input, marker::Chars};
 
 pub fn main() {
@@ -12,23 +14,18 @@ pub fn main() {
     for &b in &bm {
         mochi[b] = true;
     }
-    // BFSにする
-    struct DFS<'a> { f: &'a dyn Fn(&DFS, usize) -> bool }
-    let dfs = DFS {
-        f: &|dfs, now: usize| -> bool {
-            if now == 0 {
-                return true;
+    let mut queue = VecDeque::<usize>::new();
+    let mut vis = vec![false; x+1];
+    queue.push_back(x);
+    vis[x] = true;
+    while let Some(next) = queue.pop_front() {
+        for &a in &an {
+            if next < a || mochi[next-a] || vis[next-a] {
+                continue;
             }
-            let mut res = false;
-            for &a in &an {
-                if now < a || mochi[now - a] {
-                    continue;
-                } else {
-                    res = res || (dfs.f)(dfs, now - a);
-                }
-            }
-            return res;
+            vis[next-a] = true;
+            queue.push_back(next-a);
         }
-    };
-    println!("{}", if (dfs.f)(&dfs, x) { "Yes" } else { "No" });
+    }
+    println!("{}", if vis[0] { "Yes" } else { "No" });
 }
