@@ -1,3 +1,5 @@
+use std::collections::HashMap;
+
 use proconio::{input, marker::Chars};
 
 pub fn main() {
@@ -24,24 +26,21 @@ pub fn main() {
         group.push(local);
     }
     bb.sort();
-    let mut min = n;
+    let mut min = n as i32;
     let mut max = 0;
     for g in group {
-        let mut count = vec![0; b+1];
-        let mut lower_bound = 0;
-        let mut low_num = 0;
+        let mut count_map = HashMap::<usize, i32>::new();
         for i in g {
             let pos = bb.partition_point(|&x| x < i);
-            if count[pos] == lower_bound {
-                inc_num += 1;
-            }
-            if inc_num == b+1 {
-
-            }
-            count[pos] += 1;
-            if max < count[pos] {
-                max = count[pos];
-            }
+            count_map.entry(pos).and_modify(|x| *x += 1).or_insert(1);
+        }
+        if count_map.len() != b+1 {
+            min = 0;
+        } else if *count_map.values().min().unwrap() < min {
+            min = *count_map.values().min().unwrap()
+        }
+        if count_map.len() != 0 && *count_map.values().max().unwrap() > max {
+            max = *count_map.values().max().unwrap();
         }
     }
     println!("{} {}", min, max);
