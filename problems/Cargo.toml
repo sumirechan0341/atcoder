@@ -1,5 +1,6 @@
 [workspace]
 members = [
+  "gbc",
   "abc320",
   "arc057",
   "abc319",
@@ -335,6 +336,7 @@ members = [
 ]
 [build]
 target-dir = "target"
+
 
 
 
