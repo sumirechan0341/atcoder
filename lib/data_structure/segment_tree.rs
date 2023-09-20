@@ -60,6 +60,8 @@ struct LazySegmentTree<T, F> {
     op: F,
     e: T,
     lazy: Vec<T>,
+    mapping: F,
+    composition: F,
 }
 
 impl<T: Copy + std::fmt::Debug + Eq, F: Fn(T, T) -> T> LazySegmentTree<T, F> {
