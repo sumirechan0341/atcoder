@@ -65,7 +65,7 @@ struct LazySegmentTree<T, F> {
 }
 
 impl<T: Copy + std::fmt::Debug + Eq, F: Fn(T, T) -> T> LazySegmentTree<T, F> {
-    fn new(n: usize, op: F, e: T) -> Self {
+    pub fn new(n: usize, op: F, e: T) -> Self {
         let mut n_ = 1;
         while n_ < n {
             n_ *= 2;
@@ -88,7 +88,7 @@ impl<T: Copy + std::fmt::Debug + Eq, F: Fn(T, T) -> T> LazySegmentTree<T, F> {
             self.lazy[k] = self.e;
         }
     }
-    fn update(&mut self, a: usize, b: usize, x: T) {
+    pub fn update(&mut self, a: usize, b: usize, x: T) {
         self.update_sub(a, b, x, 0, 0, self.n);
     }
 
@@ -106,7 +106,7 @@ impl<T: Copy + std::fmt::Debug + Eq, F: Fn(T, T) -> T> LazySegmentTree<T, F> {
             self.dat[k] = (self.op)(self.dat[2*k+1], self.dat[2*k+2]);
         }
     }
-    fn query(&mut self, a: usize, b: usize) -> T {
+    pub fn query(&mut self, a: usize, b: usize) -> T {
         self.query_sub(a, b, 0, 0, self.n)
     }
 
