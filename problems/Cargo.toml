@@ -1,5 +1,7 @@
 [workspace]
 members = [
+  "agc004",
+  "code-festival-2017",
   "gbc",
   "abc320",
   "arc057",
@@ -336,6 +338,8 @@ members = [
 ]
 [build]
 target-dir = "target"
+
+
 
 
 
