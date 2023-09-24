@@ -2403,6 +2403,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc321"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+ "proptest",
+]
+
+[[package]]
 name = "ac-library-rs"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2410,6 +2420,16 @@ checksum = "09e1ead7b72f44698f97266946c0576d00c9e2010858f5aba47aa4660177ef73"
 
 [[package]]
 name = "agc004"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+ "proptest",
+]
+
+[[package]]
+name = "ahc024"
 version = "0.1.0"
 dependencies = [
  "itertools",
@@ -2520,6 +2540,16 @@ dependencies = [
 
 [[package]]
 name = "code-festival-2017"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+ "proptest",
+]
+
+[[package]]
+name = "code-formula-2014-b"
 version = "0.1.0"
 dependencies = [
  "itertools",

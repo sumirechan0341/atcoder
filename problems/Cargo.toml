@@ -1,5 +1,8 @@
 [workspace]
 members = [
+  "code-formula-2014-b",
+  "ahc024",
+  "abc321",
   "agc004",
   "code-festival-2017",
   "gbc",
@@ -338,6 +341,9 @@ members = [
 ]
 [build]
 target-dir = "target"
+
+
+
 
 
 
