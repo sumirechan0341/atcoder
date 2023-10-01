@@ -2413,6 +2413,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "abc322"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+ "proptest",
+]
+
+[[package]]
 name = "ac-library-rs"
 version = "0.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2430,6 +2440,16 @@ dependencies = [
 
 [[package]]
 name = "ahc024"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+ "proptest",
+]
+
+[[package]]
+name = "arc056"
 version = "0.1.0"
 dependencies = [
  "itertools",
