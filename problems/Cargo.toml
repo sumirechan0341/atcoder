@@ -1,5 +1,6 @@
 [workspace]
 members = [
+  "edpc",
   "abc322",
   "arc056",
   "code-formula-2014-b",
@@ -343,6 +344,7 @@ members = [
 ]
 [build]
 target-dir = "target"
+
 
 
 

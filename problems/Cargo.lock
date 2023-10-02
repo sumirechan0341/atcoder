@@ -2597,6 +2597,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "edpc"
+version = "0.1.0"
+dependencies = [
+ "itertools",
+ "num",
+ "proconio",
+ "proptest",
+]
+
+[[package]]
 name = "either"
 version = "1.8.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
