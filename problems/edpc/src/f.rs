@@ -18,17 +18,12 @@ pub fn main() {
     let mut i = s.len();
     let mut j = t.len();
     while i > 0 && j > 0 {
-        if dp[i][j] != dp[i-1][j-1] {
-            ans += &s[i-1].to_string();
+        if dp[i][j] == dp[i-1][j] {
             i -= 1;
-            j -= 1;
-        } else if dp[i][j] != dp[i-1][j] {
-            ans += &s[i-1].to_string();
-            i -= 1;
-        } else if dp[i][j] != dp[i][j-1] {
-            ans += &t[j-1].to_string();
+        } else if dp[i][j] == dp[i][j-1] {
             j -= 1;
         } else {
+            ans += &s[i-1].to_string();
             i -= 1;
             j -= 1;
         }
