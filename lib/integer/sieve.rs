@@ -1,5 +1,5 @@
 fn sieve(n: i64) -> Vec<i64> {
-    let prime = vec![true; (n+1) as usize];
+    let mut prime = vec![true; (n+1) as usize];
     let mut res = vec![];
     if n >= 0 {
         prime[0] = false;
@@ -12,15 +12,15 @@ fn sieve(n: i64) -> Vec<i64> {
             continue;
         }
         res.push(i);
-        for j in (i+1..=n).step_by(i as usize) {
+        for j in (i..=n).step_by(i as usize) {
             prime[j as usize] = false;
         }
     }
     return res;
 }
 
-fn is_prime_table(n: i64) -> Vec<i64> {
-    let prime = vec![true; (n+1) as usize];
+fn is_prime_table(n: i64) -> Vec<bool> {
+    let mut prime = vec![true; (n+1) as usize];
     if n >= 0 {
         prime[0] = false;
     }
@@ -35,5 +35,5 @@ fn is_prime_table(n: i64) -> Vec<i64> {
             prime[j as usize] = false;
         }
     }
-    return is_prime_table;
+    return prime;
 }
