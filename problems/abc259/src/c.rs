@@ -11,11 +11,11 @@ pub fn main() {
     }
     for i in 0..t.len() {
         if i == s.len() {
-            if s[i-1] == t[i] && s[i-2] == t[i] {
+            if s[i - 1] == t[i] && s[i - 2] == t[i] {
                 s.insert(i, t[i]);
             } else {
                 println!("{}", "No");
-                return
+                return;
             }
         }
         if s[i] != t[i] {
@@ -23,11 +23,11 @@ pub fn main() {
                 println!("{}", "No");
                 return;
             }
-            if s[i-1] == t[i] && s[i-2] == t[i] {
+            if s[i - 1] == t[i] && s[i - 2] == t[i] {
                 s.insert(i, t[i]);
             } else {
                 println!("{}", "No");
-                return
+                return;
             }
         }
     }
