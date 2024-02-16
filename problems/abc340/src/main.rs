@@ -4,5 +4,5 @@ mod c;
 mod d;
 mod e;
 fn main() {
-    d::main();
+    e::main();
 }

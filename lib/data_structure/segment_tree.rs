@@ -14,9 +14,9 @@ impl<T: Copy + std::fmt::Debug, F: Fn(T, T) -> T> SegmentTree<T, F> {
         }
         SegmentTree {
             n: n_,
-            dat: vec![e; 2*n_-1],
+            dat: vec![e; 2 * n_ - 1],
             op,
-            e
+            e,
         }
     }
     /// k番目の値(0-indexed)をaに変更する
@@ -24,8 +24,8 @@ impl<T: Copy + std::fmt::Debug, F: Fn(T, T) -> T> SegmentTree<T, F> {
         let mut k = k + self.n - 1;
         self.dat[k] = a;
         while k > 0 {
-            k = (k-1)/2;
-            self.dat[k] = (self.op)(self.dat[k*2+1], self.dat[k*2+2]);
+            k = (k - 1) / 2;
+            self.dat[k] = (self.op)(self.dat[k * 2 + 1], self.dat[k * 2 + 2]);
         }
     }
     /// [a, b)の区間でクエリを実行する
@@ -36,18 +36,18 @@ impl<T: Copy + std::fmt::Debug, F: Fn(T, T) -> T> SegmentTree<T, F> {
     /// queryの用の関数
     /// 陽に使うことはない
     fn query_sub(&self, a: usize, b: usize, k: usize, l: usize, r: usize) -> T {
-        let mut ll = l + (self.n-1);
-        let mut rr = r + (self.n-1);
+        let mut ll = l + (self.n - 1);
+        let mut rr = r + (self.n - 1);
         let mut y = self.e;
         while ll < rr {
-            if ll & 1 == 0{
+            if ll & 1 == 0 {
                 y = (self.op)(y, self.dat[ll]);
             }
-            if rr & 1 == 0{
-                y = (self.op)(y, self.dat[rr-1]);
+            if rr & 1 == 0 {
+                y = (self.op)(y, self.dat[rr - 1]);
             }
-            ll = ll/2;
-            rr = (rr-1)/2;
+            ll = ll / 2;
+            rr = (rr - 1) / 2;
         }
         return y;
     }
@@ -60,30 +60,32 @@ struct LazySegmentTree<T, F> {
     op: F,
     e: T,
     lazy: Vec<T>,
-    mapping: F,
-    composition: F,
+    mapping: fn(T, F) -> T,
+    composition: fn(F, F) -> F,
 }
 
 impl<T: Copy + std::fmt::Debug + Eq, F: Fn(T, T) -> T> LazySegmentTree<T, F> {
-    pub fn new(n: usize, op: F, e: T) -> Self {
+    pub fn new(n: usize, op: F, e: T, mapping: fn(T, F) -> T, composition: fn(F, F) -> F) -> Self {
         let mut n_ = 1;
         while n_ < n {
             n_ *= 2;
         }
         LazySegmentTree {
             n: n_,
-            dat: vec![e; 2*n_-1],
-            lazy: vec![e; 2*n_-1],
+            dat: vec![e; 2 * n_ - 1],
+            lazy: vec![e; 2 * n_ - 1],
             op,
-            e
+            e,
+            mapping,
+            composition,
         }
     }
     fn eval(&mut self, k: usize, l: usize, r: usize) {
         if self.lazy[k] != self.e {
             self.dat[k] = (self.op)(self.lazy[k], self.dat[k]);
             if r - l > 1 {
-                self.lazy[2*k+1] = (self.op)(self.lazy[k], self.lazy[2*k+1]);
-                self.lazy[2*k+2] = (self.op)(self.lazy[k], self.lazy[2*k+2]);
+                self.lazy[2 * k + 1] = (self.op)(self.lazy[k], self.lazy[2 * k + 1]);
+                self.lazy[2 * k + 2] = (self.op)(self.lazy[k], self.lazy[2 * k + 2]);
             }
             self.lazy[k] = self.e;
         }
@@ -101,9 +103,9 @@ impl<T: Copy + std::fmt::Debug + Eq, F: Fn(T, T) -> T> LazySegmentTree<T, F> {
             self.lazy[k] = x;
             self.eval(k, l, r);
         } else {
-            self.update_sub(a, b, x, 2*k+1, l, (l+r)/2);
-            self.update_sub(a, b, x, 2*k+2, (l+r)/2, r);
-            self.dat[k] = (self.op)(self.dat[2*k+1], self.dat[2*k+2]);
+            self.update_sub(a, b, x, 2 * k + 1, l, (l + r) / 2);
+            self.update_sub(a, b, x, 2 * k + 2, (l + r) / 2, r);
+            self.dat[k] = (self.op)(self.dat[2 * k + 1], self.dat[2 * k + 2]);
         }
     }
     pub fn query(&mut self, a: usize, b: usize) -> T {
@@ -118,8 +120,8 @@ impl<T: Copy + std::fmt::Debug + Eq, F: Fn(T, T) -> T> LazySegmentTree<T, F> {
         if a <= l && r <= b {
             return self.dat[k];
         } else {
-            let vl = self.query_sub(a, b, 2*k+1, l, (l+r)/2);
-            let vr = self.query_sub(a, b, 2*k+2, (l+r)/2, r);
+            let vl = self.query_sub(a, b, 2 * k + 1, l, (l + r) / 2);
+            let vr = self.query_sub(a, b, 2 * k + 2, (l + r) / 2, r);
             return (self.op)(vl, vr);
         }
     }
