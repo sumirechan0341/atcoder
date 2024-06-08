@@ -1,7 +1,7 @@
-use std::process::Command;
 use std::fs::OpenOptions;
+use std::io::{BufWriter, Read, Write};
 use std::path::Path;
-use std::io::{Read, Write, BufWriter};
+use std::process::Command;
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
@@ -20,13 +20,19 @@ fn main() {
     // Copy contents of file to a mutable string
     file.read_to_string(&mut file_content).unwrap();
 
-    file = OpenOptions::new().write(true).truncate(true).open("./Cargo.toml").unwrap();
+    file = OpenOptions::new()
+        .write(true)
+        .truncate(true)
+        .open("./Cargo.toml")
+        .unwrap();
     let mut writer = BufWriter::new(file);
     let mut next = false;
     file_content.split("\n").for_each(|line| {
         if next {
             next = false;
-            writer.write_all(format!("  \"{}\",", input).as_bytes()).unwrap();
+            writer
+                .write_all(format!("  \"{}\",", input).as_bytes())
+                .unwrap();
             writer.write_all("\n".as_bytes()).unwrap();
         }
         if line.contains("members = [") {
@@ -38,10 +44,15 @@ fn main() {
         }
     });
     writer.flush().unwrap();
-    Command::new("cmd").args(&["/C", &format!("cargo new --bin {} & cd {}", input, input)]).output().expect("failed to start `cargo new`");
+    Command::new("cmd")
+        .args(&["/C", &format!("cargo new --bin {} & cd {}", input, input)])
+        .output()
+        .expect("failed to start `cargo new`");
 
-
-    file = OpenOptions::new().read(true).open(format!("./{}/Cargo.toml", input)).unwrap();
+    file = OpenOptions::new()
+        .read(true)
+        .open(format!("./{}/Cargo.toml", input))
+        .unwrap();
 
     // Create an empty mutable string
     let mut file_content = String::new();
@@ -49,16 +60,27 @@ fn main() {
     // Copy contents of file to a mutable string
     file.read_to_string(&mut file_content).unwrap();
 
-    file = OpenOptions::new().write(true).truncate(true).open(format!("./{}/Cargo.toml", input)).unwrap();
+    file = OpenOptions::new()
+        .write(true)
+        .truncate(true)
+        .open(format!("./{}/Cargo.toml", input))
+        .unwrap();
     writer = BufWriter::new(file);
     next = false;
     file_content.split("\n").for_each(|line| {
         if next {
             next = false;
-            writer.write_all("proconio = \"0.4.5\"\n".as_bytes()).unwrap();
-            writer.write_all("itertools = \"0.10.5\"\n".as_bytes()).unwrap();
+            writer
+                .write_all("proconio = \"0.4.5\"\n".as_bytes())
+                .unwrap();
+            writer
+                .write_all("itertools = \"0.10.5\"\n".as_bytes())
+                .unwrap();
             writer.write_all("num = \"0.4.0\"\n".as_bytes()).unwrap();
-            writer.write_all("proptest = \"1.0.0\"".as_bytes()).unwrap();
+            writer.write_all("proptest = \"1.0.0\"\n".as_bytes()).unwrap();
+            writer
+                .write_all("ac-library-rs = \"0.1.1\"".as_bytes())
+                .unwrap();
             writer.write_all("\n".as_bytes()).unwrap();
         }
         if line.contains("[dependencies]") {
