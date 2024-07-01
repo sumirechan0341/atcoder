@@ -1,5 +1,6 @@
 [workspace]
 members = [
+  "typical90",
   "abc360",
   "abc359",
   "abc358",
@@ -384,6 +385,7 @@ members = [
 ]
 [build]
 target-dir = "target"
+
 
 
 
